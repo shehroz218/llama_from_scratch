@@ -68,8 +68,7 @@ class RMSNorm(nn.Module):
     def _norm(self, x:torch.Tensor):
         return x * torch.rsqrt(x.pow(2).mean(-1, keepdim=True)+self.eps)
     
-    def forward(self, x:torch.Tensor):
-        return self.weight * self._norm(x.float()).type_as(x)
+    
 
 class SelfAttention(nn.Module):
     def __init__(self, args: ModelArgs):
